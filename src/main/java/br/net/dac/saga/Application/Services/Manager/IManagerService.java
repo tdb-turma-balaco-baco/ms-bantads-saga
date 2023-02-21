@@ -1,24 +1,18 @@
 package br.net.dac.saga.Application.Services.Manager;
 
+import br.net.dac.saga.Domain.Events.Auth.Response.ManagerAuthCreatedEvent;
+import br.net.dac.saga.Domain.Events.Auth.Response.RemovedManagerAccessEvent;
+import br.net.dac.saga.Domain.Events.Client.Response.ClientCreatedEvent;
+import br.net.dac.saga.Domain.Events.Manager.Request.ChangeManagerClientsEvent;
+import br.net.dac.saga.Domain.Events.Manager.Request.CreateManagerEvent;
+import br.net.dac.saga.Domain.Events.Manager.Request.UpdateManagerEvent;
+
 public interface IManagerService {
-    /*
-     *         idClassMapping.put("CreateManagerEvent", SaveManagerEvent.class);
-        idClassMapping.put("RemoveManagerEvent", RemoveManagerEvent.class);
-        idClassMapping.put("UpdateManagerEvent", UpdateManagerEvent.class);
 
-        idClassMapping.put("ChangeManagerClients", ChangeManagerClients.class);
-        idClassMapping.put("SelectMaxCientEvent", SelectMaxClientEvent.class);
-        idClassMapping.put("SelectMinClientEvent", SelectMinClientEvent.class);
-
-        idClassMapping.put("ChangedManagerClientsEvent", ChangedManagerClientsEvent.class);
-        idClassMapping.put("CreatedManagerEvent", CreatedManagerEvent.class);
-        idClassMapping.put("SelectedManagerEvent", SelectedManagerEvent.class);
-        idClassMapping.put("SelectedTopEvent", SelectedTopEvent.class);
-        idClassMapping.put("UpdatedManagerEvent", UpdatedManagerEvent.class);
-     */
-    void processChangedManagerClientsEvent();
-    void processCreatedManagerEvent();
-    void processSelectedManagerEvent();
-    void processSelectedTopEvent();
-    void processUpdatedManagerEvent();
+    void processCreateManagerEvent(CreateManagerEvent event);
+    void processSelectMaxClientEvent(ManagerAuthCreatedEvent eventResponse);
+    void processSelectMinClientEvent(ClientCreatedEvent eventResponse);
+    void processUpdateManagerEvent(UpdateManagerEvent event);
+    void processChangeManagerClients(ChangeManagerClientsEvent event);
+    void processRemoveManagerAccess(RemovedManagerAccessEvent event);
 }
