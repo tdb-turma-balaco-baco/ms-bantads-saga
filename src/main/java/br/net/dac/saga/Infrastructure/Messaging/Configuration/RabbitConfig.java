@@ -22,6 +22,7 @@ import br.net.dac.saga.Domain.Events.Account.Request.UpdateStatusAccountEvent;
 import br.net.dac.saga.Domain.Events.Account.Response.ChangedStatusAccountEvent;
 import br.net.dac.saga.Domain.Events.Account.Response.CreatedAccountEvent;
 import br.net.dac.saga.Domain.Events.Account.Response.ErrorAccountEvent;
+import br.net.dac.saga.Domain.Events.Account.Response.SwapAllManagerClientsEvent;
 import br.net.dac.saga.Domain.Events.Auth.Request.CreateClientAuthEvent;
 import br.net.dac.saga.Domain.Events.Auth.Request.CreateManagerAuthEvent;
 import br.net.dac.saga.Domain.Events.Auth.Request.GeneratePasswordEvent;
@@ -60,10 +61,10 @@ public class RabbitConfig {
     @Value("${auth.client.queue}")
     private String authQueue;
 
-    @Value("${auth.queue.producer}")
+    @Value("${auth.manager.queue}")
     private String authManagerQueue;
 
-    @Value("${auth.manager.queue}")
+    @Value("${auth.queue.producer}")
     private String authResponseQueue;
 
     @Value("${account.queue}")
@@ -174,6 +175,7 @@ public class RabbitConfig {
         accounMap.put("SwapManagerEvent", SwapManagerEvent.class);
 
         accounMap.put("ChangedStatusAccountEvent", ChangedStatusAccountEvent.class);
+        accounMap.put("ReplacedAllManagerEvent", SwapAllManagerClientsEvent.class);
         accounMap.put("CreatedAccountEvent", CreatedAccountEvent.class);
         accounMap.put("ErrorAccountEvent", ErrorAccountEvent.class);
         return accounMap;

@@ -25,7 +25,7 @@ public class AccountQueueConsumers {
     @RabbitHandler
     public void receiveChangedStatus(@Payload ChangedStatusAccountEvent eventResponse){
 
-        if(eventResponse.getStatus() == "APPROVED")
+        if(eventResponse.getStatus().equals("APPROVED"))
         {
             _authService.processGeneratePasswordEvent(eventResponse);
         }else{

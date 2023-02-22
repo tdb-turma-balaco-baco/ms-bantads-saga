@@ -1,6 +1,7 @@
 package br.net.dac.saga.Application.Services.Account;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import br.net.dac.saga.Application.Abstraction.IMessageSender;
@@ -21,9 +22,12 @@ public class AccountService implements IAccountService{
     @Autowired
     IMessageSender _messageSender;
 
+    @Value("${account.queue}")
+    private String accountQueue;
+
     @Override
     public void processUpdateStatusAccountEvent(UpdateStatusAccountEvent status) {
-        _messageSender.sendMessage("${account.queue}", status);
+        _messageSender.sendMessage(accountQueue, status);
     }
 
     @Override
@@ -32,7 +36,7 @@ public class AccountService implements IAccountService{
                                         eventResponse.getManagerCpf(),
                                         eventResponse.getManagerName(),
                                         false);
-         _messageSender.sendMessage("${account.queue}", event);
+         _messageSender.sendMessage(accountQueue, event);
     }
 
     @Override
@@ -40,7 +44,7 @@ public class AccountService implements IAccountService{
         UpdateAccountManagerEvent event = new UpdateAccountManagerEvent(eventResponse.getCpf(), 
                                             eventResponse.getName());   
                                             
-        _messageSender.sendMessage("${account.queue}", event);
+        _messageSender.sendMessage(accountQueue, event);
     }
 
     @Override
@@ -48,7 +52,7 @@ public class AccountService implements IAccountService{
         SwapManagerEvent event = new SwapManagerEvent(eventResponse.getOldManagerCpf(), 
         eventResponse.getManagerCpf(), eventResponse.getManagerName(), true);
         
-        _messageSender.sendMessage("${account.queue}", event);
+        _messageSender.sendMessage(accountQueue, event);
     }
 
     @Override
@@ -61,7 +65,7 @@ public class AccountService implements IAccountService{
             eventResponse.getManagerName(),
             eventResponse.getWage()   
         );
-        _messageSender.sendMessage("${account.queue}", event);
+        _messageSender.sendMessage(accountQueue, event);
     }
 
     @Override
@@ -70,7 +74,7 @@ public class AccountService implements IAccountService{
                                         eventReponse.getCpf(), 
                                         eventReponse.getEmail(),
                                         eventReponse.getWage());
-        _messageSender.sendMessage("${account.queue}", event);
+        _messageSender.sendMessage(accountQueue, event);
         
     }
 

@@ -28,9 +28,9 @@ public class AuthService implements IAuthService {
 
     @Override
     public void processCreateClientAuthEvent(CreatedAccountEvent eventResponse) {
-        CreateClientAuthEvent event = new CreateClientAuthEvent(eventResponse.getEmail(), 
-                                        eventResponse.getName(),
-                                        eventResponse.getCpf());
+        CreateClientAuthEvent event = new CreateClientAuthEvent(eventResponse.getEmail(),
+                eventResponse.getName(),
+                eventResponse.getCpf());
         _messageSender.sendMessage(authQueue, event);
     }
 
@@ -42,16 +42,15 @@ public class AuthService implements IAuthService {
 
     @Override
     public void processCreateManagerAuthEvent(CreatedManagerEvent eventResponse) {
-        CreateManagerAuthEvent event = new CreateManagerAuthEvent(eventResponse.getName(),
-         eventResponse.getEmail(), eventResponse.getCpf());  
-         _messageSender.sendMessage(authManagerQueue, event);
+        CreateManagerAuthEvent event = new CreateManagerAuthEvent(eventResponse.getEmail(),
+                eventResponse.getName(), eventResponse.getCpf());
+        _messageSender.sendMessage(authManagerQueue, event);
     }
 
     @Override
     public void processRemoveManagerAccess(SwapAllManagerClientsEvent eventResponse) {
         RemoveManagerAccessEvent event = new RemoveManagerAccessEvent(eventResponse.getCpf());
-        _messageSender.sendMessage(authQueue, event);    
+        _messageSender.sendMessage(authManagerQueue, event);
     }
 
-    
 }
