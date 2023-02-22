@@ -76,7 +76,7 @@ public class ClientController {
     //UpdateStatusAaccountEvent - approved true (Account)
     //Recebe ChangedStatusAccountEvent approved true e encaminha para -> GeneratePasswordEvent (Auth)
     //Recebe ClientPasswordCreatedEvent e encaminha para -> ClientApprovedEvent (Notification)
-    @PostMapping("/approve")
+    @PutMapping("/approve")
     public ResponseEntity<?> approveClient(@Valid @RequestBody AccountStatusDTO accountStatusDTO)
     {
         try{
@@ -90,7 +90,7 @@ public class ClientController {
         }
     }
 
-    @PostMapping("reject")
+    @PutMapping("reject")
     public ResponseEntity<?> rejectClient(@Valid @RequestBody AccountStatusDTO accountStatusDTO)
     {
         try{
