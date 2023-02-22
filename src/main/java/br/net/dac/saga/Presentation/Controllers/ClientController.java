@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,7 +55,7 @@ public class ClientController {
 
     //UpdateClientEvent -> (Client)
     //Recebe UpdatedClientEvent e envia para -> UpdateAccountEvent (Account)
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<?> updateClient(@Valid @RequestBody ClientDTO clientDTO)
     {
         try{

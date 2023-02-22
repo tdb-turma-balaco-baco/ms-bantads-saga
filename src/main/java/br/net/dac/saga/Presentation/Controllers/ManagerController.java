@@ -3,8 +3,10 @@ package br.net.dac.saga.Presentation.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,7 +47,7 @@ public class ManagerController {
 
     //UpdateManagerEvent -> (Manager)
     //Recebe UpdatedManagerEvent e envia para -> UpdateManagerEvent (Account)
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<?> updateManager(@Valid @RequestBody ManagerDTO managerDTO)
     {
         try{
@@ -66,7 +68,7 @@ public class ManagerController {
     //ChangedManagerClients recebe e envia para -> SwapManagerEvent - swapAll true (Account)
     //Recebe SwapPerformedManagerEvent e envia para -> BlockManagerEvent (Auth)
     //Recebe BlockedManagerEvent e envia para -> RemoveManager (Manager)
-    @PostMapping("/{cpf}/remove")
+    @DeleteMapping("/{cpf}/remove")
     public ResponseEntity<?> removeManager(@PathVariable String cpf)
     {
         try{
