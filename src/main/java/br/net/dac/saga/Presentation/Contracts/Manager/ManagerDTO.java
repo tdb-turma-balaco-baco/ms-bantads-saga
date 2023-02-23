@@ -10,9 +10,9 @@ public class ManagerDTO {
     private String name;
     @Email
     private String email;
-    @Pattern(regexp = "([0-9]{3}[\\.][0-9]{3}[\\.][0-9]{3}[-][0-9]{2})")
+    @NotEmpty
     private String cpf;
-    @Pattern(regexp = "^[(][0-9]{2}[)][\s]?[0-9]{5,6}[-][0-9]{4}$")
+    @NotEmpty
     private String phone;
     
     public String getName() {
