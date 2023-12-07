@@ -1,15 +1,13 @@
-package br.net.dac.saga;
+package br.ufpr.tads.msbantadssaga;
 
-import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@EnableRabbit
-public class SagaApplication {
+public class MsBantadsSagaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SagaApplication.class, args);
+		SpringApplication.run(MsBantadsSagaApplication.class, args);
 	}
 
 }
