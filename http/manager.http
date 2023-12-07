@@ -1,0 +1,12 @@
+### Create Manager
+POST http://localhost:8081/api/saga/manager
+Content-Type: application/json
+
+{
+  "firstName":"firstName",
+  "lastName":"lastName",
+  "email":"emailzaotop@email.com",
+  "cpf":"12312312311",
+  "phone":"12312312311",
+  "createdBy":"jmeter@test.com"
+}
